@@ -16,6 +16,6 @@ target_sources(
   lib_test PRIVATE "${SOURCE}/lib.test.cpp" "${SOURCE}/main.test.cpp"
 )
 
-target_link_libraries(lib_test PRIVATE lib::lib Boost::unit_test_framework)
+target_link_libraries(lib_test PRIVATE lib::lib)
 
 add_test(NAME lib::test COMMAND lib_test "--color_output=false")

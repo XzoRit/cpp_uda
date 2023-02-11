@@ -1,9 +1,6 @@
 import boost
     ;
 
-boost.use-project
-    ;
-
 constant sources
     : [ glob *.cpp ]
     ;
@@ -11,7 +8,6 @@ constant sources
 exe exe
     : $(sources)
       /lib//lib_lib
-      /boost//program_options
     ;
 
 import testing

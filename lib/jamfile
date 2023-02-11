@@ -1,12 +1,6 @@
 import testing
     ;
 
-import boost
-    ;
-
-boost.use-project
-    ;
-
 constant inc_dir
     : .
     ;
@@ -34,6 +28,5 @@ run $(test_sources)
     : --color_output=false
     :
     : <library>lib_lib
-      <library>/boost//unit_test_framework
     : test
     ;
