@@ -1,4 +1,4 @@
-find_package(ut CONFIG REQUIRED)
+find_package(Boost REQUIRED)
 
 set(INCLUDE ${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -19,6 +19,6 @@ target_sources(
 )
 
 target_link_libraries(lib_test PRIVATE lib::lib)
-target_link_libraries(lib_test PRIVATE Boost::ut)
+target_link_libraries(lib_test PRIVATE Boost::headers)
 
 add_test(NAME lib::test COMMAND lib_test)
