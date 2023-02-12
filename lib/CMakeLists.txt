@@ -1,3 +1,5 @@
+find_package(ut CONFIG REQUIRED)
+
 set(INCLUDE ${CMAKE_CURRENT_SOURCE_DIR})
 
 set(SOURCE ${INCLUDE}/lib)
@@ -17,5 +19,6 @@ target_sources(
 )
 
 target_link_libraries(lib_test PRIVATE lib::lib)
+target_link_libraries(lib_test PRIVATE Boost::ut)
 
-add_test(NAME lib::test COMMAND lib_test "--color_output=false")
+add_test(NAME lib::test COMMAND lib_test)

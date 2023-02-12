@@ -28,5 +28,6 @@ run $(test_sources)
     : --color_output=false
     :
     : <library>lib_lib
+      <library>/site-config//bext-ut
     : test
     ;
