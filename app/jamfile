@@ -5,4 +5,5 @@ exe app_console
     : main_console.cpp
       /lib//lib_counter
       /lib//lib_console
+      /site-config//lager
     ;
