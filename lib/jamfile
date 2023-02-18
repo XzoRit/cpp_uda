@@ -6,7 +6,7 @@ constant inc_dir
     ;
 
 constant src_dir
-    : $(inc_dir)/lib
+    : $(inc_dir)/counter
     ;
 
 constant test_sources

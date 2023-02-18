@@ -1,4 +1,4 @@
-#include <lib/lib.hpp>
+#include <counter/counter.hpp>
 
 #include <boost/test/unit_test.hpp>
 
