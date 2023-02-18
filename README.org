@@ -1,6 +1,4 @@
-* template for c++ projects
-This folder contains the project structure.
-Clone this repository delete the .git folder rename the project folder to your project name.
+* UDA Playground
 ** build files
 Boost.Build and CMake build files are available.
 *** Boost.Build
