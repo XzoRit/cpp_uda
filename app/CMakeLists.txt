@@ -1,7 +1,9 @@
-add_executable(app_exe)
+add_executable(app_console)
+target_sources(app_console PRIVATE "main_console.cpp")
+target_link_libraries(app_console PRIVATE lib::counter)
+target_link_libraries(app_console PRIVATE lib::console)
 
-target_sources(app_exe PRIVATE "main.cpp")
-
-target_link_libraries(app_exe PRIVATE lib::counter)
-
-add_test(NAME app::exe COMMAND app_exe "--help")
+add_executable(app_console_lager)
+target_sources(app_console_lager PRIVATE "main_console_lager.cpp")
+target_link_libraries(app_console_lager PRIVATE lib::counter)
+target_link_libraries(app_console_lager PRIVATE lib::console)

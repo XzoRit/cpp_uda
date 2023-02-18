@@ -1,33 +1,67 @@
 import testing
     ;
 
-constant inc_dir
+constant counter_inc
     : .
     ;
 
-constant src_dir
-    : $(inc_dir)/counter
+constant counter_src
+    : $(counter_inc)/counter
     ;
 
-constant test_sources
-    : [ glob $(src_dir)/*.test.cpp ]
+constant counter_test_src
+    : [ glob $(counter_src)/*.test.cpp ]
     ;
 
-constant sources
-    : [ glob $(src_dir)/*.cpp : $(test_sources) ]
+constant counter_src
+    : [ glob $(counter_src)/*.cpp : $(counter_test_src) ]
     ;
 
-lib lib_lib
-    : $(sources)
-    : <include>$(inc_dir)
+lib lib_counter
+    : $(counter_src)
+    : <include>$(counter_inc)
     :
-    : <include>$(inc_dir)
+    : <include>$(counter_inc)
     ;
 
-run $(test_sources)
+run $(counter_test_src)
     : --color_output=false
     :
-    : <library>lib_lib
-      <library>/site-config//bext-ut
-    : test
+    : <library>lib_counter
+      <library>/site-config//boost_headers
+    : test_counter
+    ;
+
+
+constant console_inc
+    : .
+    ;
+
+constant console_src
+    : $(console_inc)/console
+    ;
+
+constant console_test_src
+    : [ glob $(console_src)/*.test.cpp ]
+    ;
+
+constant console_src
+    : [ glob $(console_src)/*.cpp : $(console_test_src) ]
+    ;
+
+lib lib_console
+    : $(console_src)
+    : <include>$(console_inc)
+      <library>lib_counter
+    :
+    : <include>$(console_inc)
+      <library>lib_counter
+    ;
+
+run $(console_test_src)
+    : --color_output=false
+    :
+    : <library>lib_console
+      <library>/site-config//boost_headers
+    : test_console
     ;

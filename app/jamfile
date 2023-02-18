@@ -1,22 +1,8 @@
 import boost
     ;
 
-constant sources
-    : [ glob *.cpp ]
-    ;
-
-exe exe
-    : $(sources)
-      /lib//lib_lib
-    ;
-
-import testing
-    ;
-
-unit-test run
-    : exe
-    : <testing.arg>"--help"
-    ;
-
-always run
+exe app_console
+    : main_console.cpp
+      /lib//lib_counter
+      /lib//lib_console
     ;
