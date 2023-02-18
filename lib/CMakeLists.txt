@@ -27,6 +27,7 @@ add_executable(console_test)
 target_sources(
   console_test PRIVATE "${console_src}/console.test.cpp" "${console_src}/main.test.cpp"
 )
+target_link_libraries(console_test PRIVATE lib::counter)
 target_link_libraries(console_test PRIVATE lib::console)
 target_link_libraries(console_test PRIVATE Boost::headers)
 add_test(NAME lib::console_test COMMAND console_test)

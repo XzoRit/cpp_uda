@@ -61,7 +61,8 @@ lib lib_console
 run $(console_test_src)
     : --color_output=false
     :
-    : <library>lib_console
+    : <library>lib_counter
+      <library>lib_console
       <library>/site-config//boost_headers
     : test_console
     ;
