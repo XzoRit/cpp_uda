@@ -5,5 +5,28 @@ exe app_console
     : main_console.cpp
       /lib//lib_counter
       /lib//lib_console
+    ;
+
+exe app_console_lager
+    : main_console_lager.cpp
+      /lib//lib_counter
+      /lib//lib_console
+      /site-config//lager
+    ;
+
+exe app_ftxui
+    : main_ftxui.cpp
+      /lib//lib_counter
+      /site-config//ftxui-dom
+      /site-config//ftxui-screen
+      /site-config//ftxui-component
+    ;
+
+exe app_imgui_lager
+    : main_imgui_lager.cpp
+      /lib//lib_counter
+      /site-config//sdl2
+      /site-config//opengl
+      /site-config//imgui
       /site-config//lager
     ;
