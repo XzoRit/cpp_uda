@@ -1,4 +1,5 @@
 #include <counter/counter.hpp>
+#include <imgui/imgui.hpp>
 
 #include <lager/event_loop/sdl.hpp>
 #include <lager/store.hpp>
@@ -129,7 +130,6 @@ int main(int, char**)
             ::counter::model{},
             ::lager::with_sdl_event_loop{loop})};
 
-        int value{};
         loop.run(
             [&](const ::SDL_Event& ev) {
                 ::ImGui_ImplSDL2_ProcessEvent(&ev);
@@ -138,23 +138,7 @@ int main(int, char**)
             [&](auto&&) {
                 gui_context.new_frame();
                 {
-                    using namespace ::ImGui;
-
-                    Begin("Counter");
-                    Text("Hold to repeat");
-                    Text("value = %d", value);
-                    PushButtonRepeat(true);
-                    if (ArrowButton("##down", ImGuiDir_Down))
-                        --value;
-                    SameLine(0.0f, GetStyle().ItemInnerSpacing.x);
-                    if (ArrowButton("##up", ImGuiDir_Up))
-                        ++value;
-                    PopButtonRepeat();
-                    SameLine();
-                    if (Button("reset"))
-                        value = 0;
-                    End();
-                    ShowDemoWindow();
+                    ::imgui::draw(store, store.get());
                 }
                 gui_context.render();
                 return true;

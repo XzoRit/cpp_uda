@@ -66,3 +66,41 @@ run $(console_test_src)
       <library>/site-config//boost_headers
     : test_console
     ;
+
+constant imgui_inc
+    : .
+    ;
+
+constant imgui_src
+    : $(imgui_inc)/imgui
+    ;
+
+constant imgui_test_src
+    : [ glob $(imgui_src)/*.test.cpp ]
+    ;
+
+constant imgui_src
+    : [ glob $(imgui_src)/*.cpp : $(imgui_test_src) ]
+    ;
+
+lib lib_imgui
+    : $(imgui_src)
+    : <include>$(imgui_inc)
+      <library>lib_counter
+      <library>/site-config//imgui
+      <library>/site-config//lager
+    :
+    : <include>$(imgui_inc)
+      <library>lib_counter
+      <library>/site-config//imgui
+      <library>/site-config//lager
+    ;
+
+run $(imgui_test_src)
+    : --color_output=false
+    :
+    : <library>lib_counter
+      <library>lib_imgui
+      <library>/site-config//boost_headers
+    : test_imgui
+    ;
