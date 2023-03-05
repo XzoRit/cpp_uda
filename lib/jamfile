@@ -33,6 +33,38 @@ run $(counter_test_src)
     ;
 
 
+constant model_inc
+    : .
+    ;
+
+constant model_src
+    : $(model_inc)/model
+    ;
+
+constant model_test_src
+    : [ glob $(model_src)/*.test.cpp ]
+    ;
+
+constant model_src
+    : [ glob $(model_src)/*.cpp : $(model_test_src) ]
+    ;
+
+lib lib_model
+    : $(model_src)
+    : <include>$(model_inc)
+    :
+    : <include>$(model_inc)
+    ;
+
+run $(model_test_src)
+    : --color_output=false
+    :
+    : <library>lib_model
+      <library>/site-config//boost_headers
+    : test_model
+    ;
+
+
 constant console_inc
     : .
     ;

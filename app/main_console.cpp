@@ -11,9 +11,13 @@ int main()
     while (std::cin >> event)
     {
         if (event == 'q')
+        {
             break;
+        }
         if (auto act{::console::intent(event)}; act.has_value())
+        {
             m = ::counter::update(m, act.value());
+        }
         ::console::draw(m);
     }
 }

@@ -1,11 +1,9 @@
 find_package(Boost REQUIRED)
-find_package(Lager CONFIG REQUIRED)
 add_library(counter)
 set(counter_inc ${CMAKE_CURRENT_SOURCE_DIR})
 set(counter_src ${counter_inc}/counter)
 target_sources(counter PRIVATE "${counter_src}/counter.cpp" "${counter_src}/counter.hpp")
 target_include_directories(counter PUBLIC ${counter_inc})
-target_link_libraries(counter PUBLIC lager)
 add_library(lib::counter ALIAS counter)
 
 add_executable(counter_test)
@@ -15,6 +13,22 @@ target_sources(
 target_link_libraries(counter_test PRIVATE lib::counter)
 target_link_libraries(counter_test PRIVATE Boost::headers)
 add_test(NAME lib::conuter_test COMMAND counter_test)
+
+find_package(Boost REQUIRED)
+add_library(model)
+set(model_inc ${CMAKE_CURRENT_SOURCE_DIR})
+set(model_src ${model_inc}/model)
+target_sources(model PRIVATE "${model_src}/model.cpp" "${model_src}/model.hpp")
+target_include_directories(model PUBLIC ${model_inc})
+add_library(lib::model ALIAS model)
+
+add_executable(model_test)
+target_sources(
+  model_test PRIVATE "${model_src}/model.test.cpp" "${model_src}/main.test.cpp"
+)
+target_link_libraries(model_test PRIVATE lib::model)
+target_link_libraries(model_test PRIVATE Boost::headers)
+add_test(NAME lib::model_test COMMAND model_test)
 
 find_package(Boost REQUIRED)
 add_library(console)
