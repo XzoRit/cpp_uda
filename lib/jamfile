@@ -52,8 +52,10 @@ constant model_src
 lib lib_model
     : $(model_src)
     : <include>$(model_inc)
+      <library>lib_counter
     :
     : <include>$(model_inc)
+      <library>lib_counter
     ;
 
 run $(model_test_src)

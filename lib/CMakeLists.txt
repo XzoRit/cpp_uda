@@ -20,6 +20,7 @@ set(model_inc ${CMAKE_CURRENT_SOURCE_DIR})
 set(model_src ${model_inc}/model)
 target_sources(model PRIVATE "${model_src}/model.cpp" "${model_src}/model.hpp")
 target_include_directories(model PUBLIC ${model_inc})
+target_link_libraries(model PUBLIC lib::counter)
 add_library(lib::model ALIAS model)
 
 add_executable(model_test)
