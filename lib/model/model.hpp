@@ -9,6 +9,7 @@ namespace model
 struct model
 {
     ::counter::model counter{};
+    bool operator==(const model&) const = default;
 };
 using action = ::counter::action;
 struct visitor

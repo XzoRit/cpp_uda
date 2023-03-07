@@ -1,5 +1,5 @@
-#include <counter/counter.hpp>
 #include <imgui/imgui.hpp>
+#include <model/model.hpp>
 
 #include <lager/event_loop/sdl.hpp>
 #include <lager/store.hpp>
@@ -126,8 +126,8 @@ int main(int, char**)
         auto gui_context{::imgui_context{window.handle, gl_context.gl_context}};
 
         auto loop{::lager::sdl_event_loop{}};
-        auto store{::lager::make_store<::counter::action>(
-            ::counter::model{},
+        auto store{::lager::make_store<::model::action>(
+            ::model::model{},
             ::lager::with_sdl_event_loop{loop})};
 
         loop.run(

@@ -1,13 +1,14 @@
 #pragma once
 
 #include <counter/counter.hpp>
+#include <model/model.hpp>
 
 #include <iostream>
 #include <optional>
 
 namespace console
 {
-inline std::optional<::counter::action> intent(char event)
+inline std::optional<::model::action> intent(char event)
 {
     switch (event)
     {
@@ -24,5 +25,9 @@ inline std::optional<::counter::action> intent(char event)
 inline void draw(::counter::model m)
 {
     std::cout << "current value: " << m.value << '\n';
+}
+inline void draw(::model::model m)
+{
+    draw(m.counter);
 }
 }

@@ -3,19 +3,20 @@ import boost
 
 exe app_console
     : main_console.cpp
-      /lib//lib_counter
+      /lib//lib_model
       /lib//lib_console
     ;
 
 exe app_console_lager
     : main_console_lager.cpp
-      /lib//lib_counter
+      /lib//lib_model
       /lib//lib_console
       /site-config//lager
     ;
 
 exe app_ftxui
     : main_ftxui.cpp
+      /lib//lib_model
       /lib//lib_counter
       /site-config//ftxui-dom
       /site-config//ftxui-screen

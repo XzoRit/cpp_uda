@@ -1,11 +1,11 @@
 #include <console/console.hpp>
-#include <counter/counter.hpp>
+#include <model/model.hpp>
 
 #include <iostream>
 
 int main()
 {
-    ::counter::model m{};
+    ::model::model m{};
     ::console::draw(m);
     char event{};
     while (std::cin >> event)
@@ -16,7 +16,7 @@ int main()
         }
         if (auto act{::console::intent(event)}; act.has_value())
         {
-            m = ::counter::update(m, act.value());
+            m = ::model::update(m, act.value());
         }
         ::console::draw(m);
     }
