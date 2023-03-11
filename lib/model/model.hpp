@@ -26,3 +26,14 @@ inline model update(model curr_model, action act)
     return std::visit(visitor{curr_model}, act);
 }
 }
+
+#include <cereal/cereal.hpp>
+
+namespace model
+{
+template <class Archive>
+inline void serialize(Archive& ar, model& m)
+{
+    ar(cereal::make_nvp("counter", m.counter));
+}
+}

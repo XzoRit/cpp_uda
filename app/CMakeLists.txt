@@ -1,7 +1,9 @@
+find_package(cereal CONFIG REQUIRED)
 add_executable(app_console)
 target_sources(app_console PRIVATE "main_console.cpp")
 target_link_libraries(app_console PRIVATE lib::model)
 target_link_libraries(app_console PRIVATE lib::console)
+target_link_libraries(app_console PRIVATE cereal::cereal)
 
 find_package(Lager CONFIG REQUIRED)
 add_executable(app_console_lager)

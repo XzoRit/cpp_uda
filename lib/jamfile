@@ -20,8 +20,10 @@ constant counter_src
 lib lib_counter
     : $(counter_src)
     : <include>$(counter_inc)
+      <library>/site-config//cereal
     :
     : <include>$(counter_inc)
+      <library>/site-config//cereal
     ;
 
 run $(counter_test_src)
@@ -53,9 +55,11 @@ lib lib_model
     : $(model_src)
     : <include>$(model_inc)
       <library>lib_counter
+      <library>/site-config//cereal
     :
     : <include>$(model_inc)
       <library>lib_counter
+      <library>/site-config//cereal
     ;
 
 run $(model_test_src)

@@ -5,6 +5,7 @@ exe app_console
     : main_console.cpp
       /lib//lib_model
       /lib//lib_console
+      /site-config//cereal
     ;
 
 exe app_console_lager
