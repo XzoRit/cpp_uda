@@ -1,3 +1,4 @@
+#include <counter/counter.hpp>
 #include <imgui/imgui.hpp>
 #include <model/model.hpp>
 
@@ -127,7 +128,7 @@ int main(int, char**)
 
         auto loop{::lager::sdl_event_loop{}};
         auto store{::lager::make_store<::model::action>(
-            ::model::model{},
+            ::model::model{.counter = {.value = 0}},
             ::lager::with_sdl_event_loop{loop})};
 
         loop.run(

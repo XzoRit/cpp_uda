@@ -1,4 +1,5 @@
 #include <console/console.hpp>
+#include <counter/counter.hpp>
 #include <model/model.hpp>
 
 #include <lager/event_loop/manual.hpp>
@@ -7,7 +8,7 @@
 int main()
 {
     auto store{::lager::make_store<::model::action>(
-        ::model::model{},
+        ::model::model{.counter = {.value = 0}},
         ::lager::with_manual_event_loop{})};
     ::lager::watch(store, [](auto&& m) { ::console::draw(m); });
 

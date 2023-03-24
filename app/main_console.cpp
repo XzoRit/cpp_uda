@@ -7,7 +7,7 @@
 
 int main()
 {
-    ::model::model m{::persist::load()};
+    ::model::model m{.counter{.value = 0}};
     ::console::draw(m);
     char event{};
     while (std::cin >> event)
@@ -19,8 +19,27 @@ int main()
         if (auto act{::console::intent(event)}; act.has_value())
         {
             m = ::model::update(m, act.value());
-            ::persist::save(m);
         }
         ::console::draw(m);
     }
 }
+
+// int main()
+// {
+//     ::model::model m{::persist::load()};
+//     ::console::draw(m);
+//     char event{};
+//     while (std::cin >> event)
+//     {
+//         if (event == 'q')
+//         {
+//             break;
+//         }
+//         if (auto act{::console::intent(event)}; act.has_value())
+//         {
+//             m = ::model::update(m, act.value());
+//             ::persist::save(m);
+//         }
+//         ::console::draw(m);
+//     }
+// }

@@ -2,34 +2,22 @@
 ** build files
 Boost.Build and CMake build files are available.
 *** Boost.Build
-**** build
+**** build an test all
 #+BEGIN_SRC bash
-# build and run all targets
-b2
-# build lib
-b2 lib//lib_lib
-# build/run tests of lib
-b2 lib//test
-# build app
-b2 app//exe
-# build/run app
-b2 app//run
-# if you want to use a different compiler
-b2 toolset=gcc
+b2 toolset=gcc,clang variant=debug,release
 #+END_SRC
 *** CMake
-CMake presets for gcc and clang are provided.
+*** configure all
 #+BEGIN_SRC bash
-# configure
-cmake --preset clang
-# build
-cmake --build --preset clang
-# list all available targets
-cmake --build --preset clang --target help
-# test
-ctest --preset clang
-ctest --preset clang -R 'app::exe'
-ctest --preset clang -R 'lib::test'
+cmake --preset gcc && cmake --preset gccd && cmake --preset clang && cmake --preset clangd
+#+END_SRC
+*** build all
+#+BEGIN_SRC bash
+cmake --build --preset gcc && cmake --build --preset gccd && cmake --build --preset clang && cmake --build --preset clangd
+#+END_SRC
+*** test all
+#+BEGIN_SRC bash
+ctest --preset gcc && ctest --preset gccd && ctest --preset clang && ctest --preset clangd
 #+END_SRC
 ** formatting
 *** Clang-Format file is available.

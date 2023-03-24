@@ -23,7 +23,7 @@ struct visitor
 };
 inline model update(model curr_model, action act)
 {
-    return std::visit(visitor{curr_model}, act);
+    return std::visit(visitor{.curr_model = curr_model}, act);
 }
 }
 
