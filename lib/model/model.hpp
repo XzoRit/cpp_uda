@@ -14,10 +14,10 @@ struct model
 using action = ::counter::action;
 struct visitor
 {
-    auto operator()(::counter::action act) const
+    model operator()(::counter::action act) const
     {
         const auto new_counter{::counter::update(curr_model.counter, act)};
-        return model{new_counter};
+        return model{.counter = new_counter};
     }
     model curr_model{};
 };
