@@ -78,3 +78,23 @@ target_link_libraries(imgui_test PRIVATE lib::counter)
 target_link_libraries(imgui_test PRIVATE lib::imgui)
 target_link_libraries(imgui_test PRIVATE Boost::headers)
 add_test(NAME lib::imgui_test COMMAND imgui_test)
+
+find_package(ftxui CONFIG REQUIRED)
+add_library(ftx)
+set(ftx_inc ${CMAKE_CURRENT_SOURCE_DIR})
+set(ftx_src ${ftx_inc}/ftx)
+target_sources(ftx PRIVATE "${ftx_src}/ftx.cpp" "${ftx_src}/ftx.hpp")
+target_include_directories(ftx PUBLIC ${ftx_inc})
+target_link_libraries(ftx PUBLIC lib::model)
+target_link_libraries(ftx PUBLIC lib::counter)
+target_link_libraries(ftx PRIVATE ftxui::dom ftxui::screen ftxui::component)
+add_library(lib::ftx ALIAS ftx)
+
+find_package(Boost REQUIRED)
+add_executable(ftx_test)
+target_sources(
+  ftx_test PRIVATE "${ftx_src}/ftx.test.cpp" "${ftx_src}/main.test.cpp"
+)
+target_link_libraries(ftx_test PRIVATE lib::ftx)
+target_link_libraries(ftx_test PRIVATE Boost::headers)
+add_test(NAME lib::ftx_test COMMAND ftx_test)

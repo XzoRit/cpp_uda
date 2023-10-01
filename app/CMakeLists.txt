@@ -16,7 +16,7 @@ find_package(ftxui CONFIG REQUIRED)
 add_executable(app_ftxui)
 target_sources(app_ftxui PRIVATE "main_ftxui.cpp")
 target_link_libraries(app_ftxui PRIVATE lib::model)
-target_link_libraries(app_ftxui PRIVATE lib::counter)
+target_link_libraries(app_ftxui PRIVATE lib::ftx)
 target_link_libraries(app_ftxui PRIVATE ftxui::dom ftxui::screen ftxui::component)
 
 find_package(Lager CONFIG REQUIRED)
